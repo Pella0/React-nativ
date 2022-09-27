@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import Home from "./components/Pages/Home";
+import About from "./components/Pages/About";
+import EasyMode from "./components/Game/EasyMode"
+import {NavigationContainer} from "@react-navigation/native";
+import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import HardMode from "./components/Game/HardMode";
+import MediumMode from "./components/Game/MediumMode";
+
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="Tabs"
+                    component={Tabs}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="EasyMode" component={EasyMode} />
+                <Stack.Screen name="MediumMode" component={MediumMode} />
+                <Stack.Screen name="HardMode" component={HardMode} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Tab = createMaterialBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function Tabs() {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name={'Home'} component={Home}/>
+            <Tab.Screen name={'About'} component={About}/>
+        </Tab.Navigator>
+    );
+}
