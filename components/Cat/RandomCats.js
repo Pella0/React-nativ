@@ -9,7 +9,6 @@ export default function RandomCats({result}) {
 
     return (
         <View style={styles.container}>
-            <Text>Votre resultat : {result} / 10</Text>
             <Image
                 source={{ uri: cat }}
                 style={styles.img}

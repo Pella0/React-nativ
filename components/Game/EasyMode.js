@@ -13,9 +13,9 @@ export default function EasyModeComponent() {
         return Math.floor(Math.random() * max);
     }
 
-    let generateOperation = () => {
-        let number1 = getRandomInt(50);
-        let number2 = getRandomInt(50);
+    const generateOperation = () => {
+        const number1 = getRandomInt(50);
+        const number2 = getRandomInt(50);
 
         setOperationResult(number1 + number2);
 
@@ -26,7 +26,7 @@ export default function EasyModeComponent() {
         generateOperation()
     }, [])
 
-    let onSubmitClick = () => {
+    const onSubmitClick = () => {
         if (number == operationResult) {
             setViewCat(true)
             //alert("Gagne")
@@ -51,7 +51,7 @@ export default function EasyModeComponent() {
                 title="Submit"
                 color='#000000'
             ></Button>
-            {viewCat && <RandomCats />}
+            {viewCat && <RandomCats result={operationResult}/>}
         </View>
     );
 }
