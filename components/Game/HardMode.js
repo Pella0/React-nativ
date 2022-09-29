@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, TextInput, View} from "react-native";
+import {Button, Pressable, StyleSheet, Text, TextInput, View} from "react-native";
 import React, {useEffect, useState} from "react";
 import RandomCats from "../Cat/RandomCats";
 
@@ -54,6 +54,17 @@ export default function HardMode() {
             alert("Perdu")
         }
     }
+    const newGame = () => {
+        if (viewCat === true) {
+            setViewCat(false)
+            generateOperation();
+        }
+        else {
+            console.log('coucou')
+        }
+        console.log({viewCat})
+    }
+
 
     return (
         <View style={styles.container}>
@@ -71,12 +82,25 @@ export default function HardMode() {
                 title="Submit"
                 color='#000000'
             ></Button>
-            {viewCat && <RandomCats result={operationResult} />}
+            <Pressable style={styles.buttonGame} onPress={newGame}>
+                <Text>New Game</Text>
+            </Pressable>
+
+            {viewCat && <RandomCats result={operatorSelected} />}
+
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    buttonGame: {
+        margin: 20,
+        padding: 20,
+        borderRadius: 10,
+        backgroundColor: '#70BB24',
+        fontWeight: "bold",
+        textTransform:'uppercase',
+    },
     container: {
         flex: 1,
         justifyContent: "center",

@@ -15,7 +15,7 @@ export default function RandomCats({result}) {
             />
             <StatusBar hidden={true} />
             <Button
-                title="Voulez vous rejouer ?"
+                title="Voulez vous changer de difficulter ?"
                 onPress={() => navigation.navigate('Home')}
             />
         </View>
